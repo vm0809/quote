@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Motivational Quote Generator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>💬 Your Quote:</h1>
+    <p id="quote">Click below to get inspired!</p>
+    <button onclick="getQuote()">Get New Quote</button>
+  </div>
+
+  <script>
+    function getQuote() {
+      fetch('/get-quote')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('quote').innerText = data.quote;
+        });
+    }
+  </script>
+</body>
+</html>
